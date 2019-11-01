@@ -8,7 +8,7 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - egrep -c '(vmx|svm)' /proc/cpuinfo
+  - cat /proc/cpuinfo
   - adb shell || true # force to create the adbkey
 
 install: docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
