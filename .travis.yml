@@ -1,8 +1,6 @@
 language: android
 
-android:
-  licenses:
-    - 'android-sdk-license-.+'
+dist: bionic
 
 jdk:
   - oraclejdk8
