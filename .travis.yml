@@ -3,7 +3,7 @@ language: android
 dist: bionic
 
 jdk:
-  - oraclejdk8
+  - oraclejdk9
 
 before_install:
   - cat /proc/cpuinfo
