@@ -4,7 +4,7 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - adb
+  - adb shell || true
   - ls -la /home/travis/.android
   - cat ~/.android/adbkey
 
