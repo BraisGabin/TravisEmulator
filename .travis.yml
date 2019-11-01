@@ -1,0 +1,16 @@
+language: android
+
+jdk:
+  - oraclejdk8
+
+before_install:
+  - cat ~/.android/adbkey
+
+install: docker run -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged  --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
+
+script:
+  - ./gradlew connectedCheck
+
+cache:
+  directories:
+    - $HOME/.gradle
