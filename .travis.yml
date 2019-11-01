@@ -4,7 +4,8 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - find / -name "adbkey"
+  - pwd
+  - find . -name "adbkey"
   - cat ~/.android/adbkey
 
 install: docker run -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged  --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
