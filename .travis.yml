@@ -10,10 +10,7 @@ jdk:
 before_install:
   - adb shell || true # force to create the adbkey
 
-install: docker run -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
-
-after_install:
-  - adb devices || true
+install: docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
 
 before_script:
   - mkdir "$ANDROID_HOME/licenses" || true
@@ -22,6 +19,9 @@ before_script:
 
 script:
   - ./gradlew connectedCheck
+
+after_failure:
+  - docker log device
 
 cache:
   directories:
