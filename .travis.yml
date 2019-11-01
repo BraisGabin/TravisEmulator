@@ -5,6 +5,7 @@ jdk:
 
 before_install:
   - find /home/travis/ -name "adbkey"
+  - ls -la /home/travis/.android
   - cat ~/.android/adbkey
 
 install: docker run -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged  --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
