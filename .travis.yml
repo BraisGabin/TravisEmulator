@@ -7,13 +7,10 @@ android:
 jdk:
   - oraclejdk8
 
-before_install:
-  - adb shell || true # force to create the adbkey
-
-install: docker run -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged  --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
-
-after_install:
-  - adb devices || true
+before_script:
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo "d56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license"
 
 script:
   - ./gradlew connectedCheck
