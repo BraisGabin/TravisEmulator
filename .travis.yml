@@ -21,7 +21,8 @@ script:
   - ./gradlew connectedCheck
 
 after_failure:
-  - docker log device
+  - docker ps
+  - docker logs device
 
 cache:
   directories:
