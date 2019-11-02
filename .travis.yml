@@ -1,6 +1,7 @@
-language: java
+language: android
 
 script:
+  - echo $PATH
   - ./gradlew tasks
   - ./gradlew test
 
