@@ -13,6 +13,7 @@ install:
   - unzip -u -o /tmp/sdk.zip -d $ANDROID_HOME
   - mkdir -p $ANDROID_HOME/licenses
   - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - $ANDROID_HOME/tools/bin/sdkmanager --update
   - $ANDROID_HOME/tools/bin/sdkmanager platform-tools
   - PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
