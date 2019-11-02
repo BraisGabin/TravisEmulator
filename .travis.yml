@@ -1,11 +1,12 @@
-language: android
+language: java
 
 dist: bionic
 
 jdk:
-  - openjdk11
+  - openjdk10
 
 install:
+  - export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee' # https://stackoverflow.com/a/51644855/842697
   - ANDROID_HOME=$HOME/android-sdk/
   - mkdir -p $ANDROID_HOME
   - curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > /tmp/sdk.zip
