@@ -21,6 +21,8 @@ before_script:
   - PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
 script:
+  - echo $ANDROID_HOME
+  - echo $PATH
   - ./gradlew tasks
   - ./gradlew test
 
