@@ -3,7 +3,7 @@ language: android
 dist: bionic
 
 jdk:
-  - openjdk8
+  - openjdk11
 
 install:
   - ANDROID_HOME=$HOME/android-sdk/
