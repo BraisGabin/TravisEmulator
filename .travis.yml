@@ -1,15 +1,11 @@
 language: android
 
-dist: bionic
-
 jdk:
   - oraclejdk9
 
-before_install:
-  - cat /proc/cpuinfo
-  - adb shell || true # force to create the adbkey
-
-install: docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
+install:
+  - echo $ANDROID_HOME
+  - curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > sdk.zip
 
 before_script:
   - mkdir "$ANDROID_HOME/licenses" || true
