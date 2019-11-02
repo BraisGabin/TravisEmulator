@@ -5,7 +5,10 @@ dist: bionic
 jdk:
   - openjdk11
 
-after_success:
+install:
+  - echo hola
+
+before_script:
   - export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee' # https://stackoverflow.com/a/51644855/842697
   - ANDROID_HOME=$HOME/android-sdk/
   - mkdir -p $ANDROID_HOME ~/.android/
