@@ -3,7 +3,7 @@ language: android
 dist: bionic
 
 jdk:
-  - oraclejdk9
+  - openjdk8
 
 install:
   - ANDROID_HOME=$HOME/android-sdk/
