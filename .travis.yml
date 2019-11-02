@@ -22,7 +22,3 @@ script:
 after_failure:
   - docker ps -a
   - docker logs device
-
-cache:
-  directories:
-    - $HOME/.gradle
