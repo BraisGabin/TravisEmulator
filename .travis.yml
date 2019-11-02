@@ -18,8 +18,7 @@ install:
   - PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
 script:
-  - ls
-  - ./gradlew connectedCheck
+  - ./gradlew test
 
 after_failure:
   - docker ps -a
