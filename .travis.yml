@@ -18,6 +18,7 @@ install:
   - PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
 script:
+  - ./gradlew tasks
   - ./gradlew test
 
 after_failure:
