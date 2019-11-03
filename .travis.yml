@@ -4,16 +4,18 @@ dist: bionic
 
 before_install:
   - . travis-bionic-android.sh
-  - adb shell || true # force to create the adbkey
 
-install: echo "no-op"
+install:
+  - egrep -c '(vmx|svm)' /proc/cpuinfo
+  - adb shell || true # force to create the adbkey
+  - docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
 
 script:
   - java -version
   - javac -version
   - echo $ANDROID_HOME
   - echo $PATH
-  - ./gradlew test
+  - ./gradlew connectedCheck
 
 after_failure:
   - docker ps -a
