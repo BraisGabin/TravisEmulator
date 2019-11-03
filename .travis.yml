@@ -10,7 +10,6 @@ install:
   - adb start-server # force to create the ~/.android/adbkey
   - docker pull braisgabin/android-emulator >/dev/null # `docker pull -q` is not supported by travis
   - docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
-  - adb -e shell getprop init.svc.bootanim
   - ./wait-for-emulator
 
 script:
