@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Install Android SDK
 export ANDROID_HOME=$HOME/android-sdk
 mkdir -p ${ANDROID_HOME}
@@ -17,3 +19,5 @@ touch ~/.android/repositories.cfg
 # Accept the android license
 mkdir -p ${ANDROID_HOME}/licenses
 echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
+
+set +e
