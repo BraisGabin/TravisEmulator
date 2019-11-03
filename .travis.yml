@@ -1,5 +1,7 @@
 language: java
 
+dist: bionic
+
 before_install:
   - . travis-bionic-android.sh
 
@@ -11,10 +13,6 @@ install:
   - android-wait-for-emulator
 
 script:
-  - java -version
-  - javac -version
-  - echo $ANDROID_HOME
-  - echo $PATH
   - ./gradlew connectedCheck
 
 after_failure:
