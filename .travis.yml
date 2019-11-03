@@ -4,6 +4,9 @@ dist: bionic
 
 before_install:
   - . travis-bionic-android.sh
+  - adb shell || true # force to create the adbkey
+
+install: echo "no-op"
 
 script:
   - java -version
