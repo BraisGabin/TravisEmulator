@@ -1,13 +1,13 @@
 language: android
 
-dist: bionic
-
 before_install:
+  - cat `which android-wait-for-emulator`
   - . travis-bionic-android.sh
 
 install:
   - egrep -c '(vmx|svm)' /proc/cpuinfo
   - adb start-server # force to create the ~/.android/adbkey
+  - docker pull -q braisgabin/android-emulator
   - docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
   - android-wait-for-emulator
 
