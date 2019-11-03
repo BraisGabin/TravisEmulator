@@ -29,6 +29,6 @@ mkdir -p ${ANDROID_HOME}/licenses
 echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
 
 # Install platform-tools
-sdkmanager "platform-tools"
+sdkmanager "platform-tools" >/dev/null
 
 set +xe
