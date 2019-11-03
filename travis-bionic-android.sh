@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-#set -ex
-
-# Install OpenJDK 8
-sudo apt-get -y install openjdk-8-jdk
+set -ex
 
 # Install Android SDK
 export ANDROID_HOME=$HOME/android-sdk
