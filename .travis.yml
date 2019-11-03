@@ -1,28 +1,19 @@
-language: java
+language: generic
 
 dist: bionic
 
-jdk:
-  - openjdk10
-
 install:
-  - echo hola
-
-before_script:
-  - export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee' # https://stackoverflow.com/a/51644855/842697
-  - ANDROID_HOME=$HOME/android-sdk/
-  - mkdir -p $ANDROID_HOME ~/.android/
+  - sudo apt-get update
+  - sudo apt-get install openjdk-8-jdk
+  - export ANDROID_HOME=$HOME/android-sdk
+  - mkdir -p $ANDROID_HOME $ANDROID_HOME/licenses ~/.android/
   - curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > /tmp/sdk.zip
   - unzip -q -o /tmp/sdk.zip -d $ANDROID_HOME
   - touch ~/.android/repositories.cfg
-  - mkdir -p $ANDROID_HOME/licenses
   - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - $ANDROID_HOME/tools/bin/sdkmanager "build-tools;28.0.3" "platforms;android-29" "platform-tools" >/dev/null
-  - PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 
 script:
   - echo $ANDROID_HOME
-  - echo $PATH
   - ./gradlew tasks
   - ./gradlew test
 
