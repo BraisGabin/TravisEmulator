@@ -11,10 +11,11 @@ install:
   - docker pull braisgabin/android-emulator >/dev/null # `docker pull -q` is not supported by travis
   - docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
   - adb connect localhost:5555
-  - ./wait-for-emulator
-  - adb devices
 
 script:
+  - ./gradlew build assembleAndroidTest
+  - android-wait-for-emulator
+  - adb devices
   - ./gradlew connectedCheck
 
 after_script:
