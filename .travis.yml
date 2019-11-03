@@ -3,19 +3,19 @@ language: generic
 dist: bionic
 
 install:
-  - sudo apt-get update
-  - sudo apt-get install openjdk-8-jdk -y
+  - sudo apt-get -y install openjdk-8-jdk
   - export ANDROID_HOME=$HOME/android-sdk
   - mkdir -p $ANDROID_HOME $ANDROID_HOME/licenses ~/.android/
   - curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > /tmp/sdk.zip
   - unzip -q -o /tmp/sdk.zip -d $ANDROID_HOME
   - touch ~/.android/repositories.cfg
   - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo "org.gradle.console=plain" > "$HOME/.gradle/gradle.properties"
 
 script:
   - echo $ANDROID_HOME
-  - ./gradlew tasks --console=plain
-  - ./gradlew test --console=plain
+  - ./gradlew tasks
+  - ./gradlew test
 
 after_failure:
   - docker ps -a
