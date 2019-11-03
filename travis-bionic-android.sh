@@ -18,7 +18,9 @@ export PATH="$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/pla
 (cd ${ANDROID_HOME}/tools/bin; curl -O http://central.maven.org/maven2/org/glassfish/jaxb/jaxb-jxc/2.3.2/jaxb-jxc-2.3.2.jar)
 (cd ${ANDROID_HOME}/tools/bin; curl -O http://central.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar)
 
+cat ${ANDROID_HOME}/tools/bin/sdkmanager
 sed -i -E 's/^CLASSPATH=(.*)$/CLASSPATH=\1:$APP_HOME\/lib\/activation-1.1.1.jar:$APP_HOME\/lib\/jaxb-impl-2.1.jar:$APP_HOME\/lib\/jaxb-xjc-2.3.2.jar:$APP_HOME\/lib\/jaxb-core-2.3.0.1.jar:$APP_HOME\/lib\/jaxb-jxc-2.3.2.jar:$APP_HOME\/lib\/jaxb-api-2.3.1.jar/g' ${ANDROID_HOME}/tools/bin/sdkmanager
+cat ${ANDROID_HOME}/tools/bin/sdkmanager
 
 # Install platform-tools
 sdkmanager "platform-tools"
