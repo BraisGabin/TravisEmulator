@@ -3,8 +3,7 @@ language: android
 dist: bionic
 
 install:
-  - ls -la
-  - ./travis-bionic-android.sh
+  - . travis-bionic-android.sh
 
 script:
   - echo $ANDROID_HOME
