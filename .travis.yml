@@ -3,20 +3,11 @@ language: android
 dist: bionic
 
 install:
-  - sudo apt-get -y install openjdk-8-jdk
-  - java -version
-  - javac -version
-  - export ANDROID_HOME=$HOME/android-sdk
-  - mkdir -p $ANDROID_HOME $ANDROID_HOME/licenses ~/.android/
-  - curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > /tmp/sdk.zip
-  - unzip -q -o /tmp/sdk.zip -d $ANDROID_HOME
-  - touch ~/.android/repositories.cfg
-  - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - mkdir -p $HOME/.gradle/
-  - echo "org.gradle.console=plain" > "$HOME/.gradle/gradle.properties"
+  - ./travis-bionic-android.sh
 
 script:
   - echo $ANDROID_HOME
+  - echo $PATH
   - ./gradlew tasks
   - ./gradlew test
 
