@@ -8,7 +8,7 @@ unzip -q -o /tmp/sdk.zip -d ${ANDROID_HOME}
 
 # Don't show warning
 mkdir -p ~/.android/
-touch ~/.android/repositories.cfg
+#touch ~/.android/repositories.cfg
 
 # Accept the android license
 mkdir -p ${ANDROID_HOME}/licenses
@@ -16,4 +16,4 @@ echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/androi
 
 # Use console plain
 mkdir -p $HOME/.gradle/
-echo "org.gradle.console=plain" > "$HOME/.gradle/gradle.properties"
+#echo "org.gradle.console=plain" > "$HOME/.gradle/gradle.properties"

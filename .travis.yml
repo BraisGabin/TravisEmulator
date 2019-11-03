@@ -1,4 +1,4 @@
-language: android
+language: java
 
 dist: bionic
 
@@ -10,7 +10,6 @@ script:
   - javac -version
   - echo $ANDROID_HOME
   - echo $PATH
-  - ./gradlew tasks
   - ./gradlew test
 
 after_failure:
