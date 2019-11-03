@@ -8,7 +8,7 @@ before_install:
 install:
   - egrep -c '(vmx|svm)' /proc/cpuinfo # ensure that we have KVM enabled
   - adb start-server # force to create the ~/.android/adbkey
-  - docker pull -q braisgabin/android-emulator
+  - docker --version
   - docker run --name device -d -e "ADBKEY=$(cat ~/.android/adbkey)" --privileged --publish 5556:5556/tcp --publish 5555:5555/tcp braisgabin/android-emulator
   - android-wait-for-emulator
 
