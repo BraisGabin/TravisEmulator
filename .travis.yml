@@ -17,7 +17,7 @@ install:
 script:
   - ./gradlew connectedCheck
 
-after_failure:
+after_script:
   - docker ps -a
   - docker logs device
 
