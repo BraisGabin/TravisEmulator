@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -ex
-
 # Install Android SDK
 export ANDROID_HOME=$HOME/android-sdk
 mkdir -p ${ANDROID_HOME}
