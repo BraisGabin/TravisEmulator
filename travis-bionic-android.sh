@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 # Install OpenJDK 8
 sudo apt-get -y install openjdk-8-jdk
 
