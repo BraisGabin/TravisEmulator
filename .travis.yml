@@ -16,7 +16,10 @@ script:
   - ./gradlew build assembleAndroidTest
   - android-wait-for-emulator
   - adb devices
+  - sleep 30
+  - adb devices
   - ./gradlew connectedCheck
+  - adb devices
 
 after_script:
   - docker ps -a
