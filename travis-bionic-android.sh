@@ -9,7 +9,7 @@ function android-wait-for-emulator {
   failcounter=0
   timeout_in_sec=360
 
-  until docker inspect $1 --format="{{json .State.Health.Status}}" | grep "healthy"; do
+  until docker inspect $1 --format="{{json .State.Health.Status}}" | grep "\"healthy\""; do
     let "failcounter += 1"
     echo "Waiting for emulator to start $failcounter"
     docker inspect $1 --format="{{json .State.Health}}"
