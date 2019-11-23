@@ -13,7 +13,7 @@ install:
   - adb connect localhost:5555
 
 script:
-  - ./gradlew build assembleAndroidTest
+  - ./gradlew assembleAndroidTest
   - android-wait-for-emulator device
   - adb devices
   - sleep 30
