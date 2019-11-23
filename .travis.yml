@@ -17,8 +17,11 @@ script:
   - android-wait-for-emulator device
   - adb devices
   - sleep 30
+  - docker inspect device --format="{{json .State.Health}}"
   - adb devices
+  - docker inspect device --format="{{json .State.Health}}"
   - ./gradlew connectedCheck
+  - docker inspect device --format="{{json .State.Health}}"
   - adb devices
 
 after_script:
