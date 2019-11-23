@@ -14,7 +14,7 @@ install:
 
 script:
   - ./gradlew assembleAndroidTest
-  - android-wait-for-emulator device
+  - time android-wait-for-emulator device
   - adb devices
   - docker inspect device --format="{{json .State.Health}}"
   - ./gradlew connectedCheck
