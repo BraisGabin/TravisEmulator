@@ -9,17 +9,13 @@ function android-wait-for-emulator {
   failcounter=0
   timeout_in_sec=360
 
-  until [[ "$bootanim" =~ "stopped" ]]; do
+  until docker inspect $1 --format="{{json .State.Health.Status}}" | grep "healthy"; do
+    let "failcounter += 1"
+    echo "Waiting for emulator to start $failcounter"
     docker inspect $1 --format="{{json .State.Health}}"
-    bootanim=`adb -e shell getprop init.svc.bootanim 2>&1 &`
-    if [[ "$bootanim" =~ "device not found" || "$bootanim" =~ "device offline"
-      || "$bootanim" =~ "running" ]]; then
-      let "failcounter += 1"
-      echo "Waiting for emulator to start"
-      if [[ $failcounter -gt timeout_in_sec ]]; then
-        echo "Timeout ($timeout_in_sec seconds) reached; failed to start emulator"
-        exit 1
-      fi
+    if [[ $failcounter -gt timeout_in_sec ]]; then
+      echo "Timeout ($timeout_in_sec seconds) reached; failed to start emulator"
+      exit 1
     fi
     sleep 1
   done
