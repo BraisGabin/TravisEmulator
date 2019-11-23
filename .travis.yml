@@ -14,7 +14,7 @@ install:
 
 script:
   - ./gradlew build assembleAndroidTest
-  - android-wait-for-emulator
+  - android-wait-for-emulator device
   - adb devices
   - sleep 30
   - adb devices
